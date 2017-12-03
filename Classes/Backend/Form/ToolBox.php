@@ -517,7 +517,7 @@ class Tx_Rnbase_Backend_Form_ToolBox
             tx_rnbase::load('tx_rnbase_mod_Util');
             $label = tx_rnbase_mod_Util::getSpriteIcon($options['sprite']);
         }
-        $location = $location.$urlParams;
+        $location = $location.(isset($urlParams[0]) && $urlParams[0] == '&' ? $urlParams : ('&'.$urlParams));
         $jsCode = "window.location.href='".$location. "'; return false;";
         if (isset($options['confirm']) && strlen($options['confirm']) > 0) {
             $jsCode = 'if(confirm('.Tx_Rnbase_Utility_Strings::quoteJSvalue($options['confirm']).')) {' . $jsCode .'} else {return false;}';
